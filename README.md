@@ -27,3 +27,7 @@
 >>>>>>> 1eb9ef2 (Primer commit)
 # Salvaditas
 # Salvaditas
+# Link de base de datos
+https://drive.google.com/file/d/1KkdPJ7l5uiiPKNWPe0ZAbTpTKouF4175/view?usp=sharing
+# Link como restaurar una base de datos
+https://www.youtube.com/watch?v=5W7pY7BKda0
