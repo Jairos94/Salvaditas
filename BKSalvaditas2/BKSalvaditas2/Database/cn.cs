@@ -9,13 +9,13 @@ namespace BKSalvaditas2.Database
     {
         private string DataSource = "DESKTOP-4FJOI9V";
         private string BaseDatos = "Salvaditas";
+        private string x;
 
-
-        public void conexcion( string x) 
+        public string conexcion() 
         {
 
             x="Data Source="+ DataSource + ";Initial Catalog="+ BaseDatos + ";Integrated Security=True";
-            
+            return x;
         }
     }
 }
