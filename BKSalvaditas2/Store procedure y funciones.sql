@@ -1,5 +1,6 @@
 USE Salvaditas
 
+--Buscar por cédula
 GO
 Create function fs_ConsultarCedula
 (@Cedula varchar(50))
@@ -116,6 +117,9 @@ begin
 	Return
 end;
 
+
+--Se hace el ingreso de la visita
+GO
 CREATE PROCEDURE sp_IngresoVisita
 @Cedula varchar(50),
 @IdEmpleado int,
@@ -142,3 +146,32 @@ Select * from fs_ConsultarCedula('115670466')
 --Select * from [dbo].[fs_ConsultarFuncionario]('Desarrollo')
 --SELECT idDepartamento FROM fs_ConsultarFuncionarioID(5)
 
+
+--Se busca al colaborador por nombre, apellidos ó por departamento
+GO
+CREATE PROCEDURE sp_BuscarEmpleado
+@Variable varchar(50)
+AS
+SELECT F.id,F.idDepartamento,P.Nombre,P.Apellido1,P.Apellido2 FROM Funcionario F
+INNER JOIN Persona P ON F.idCedula=P.id
+INNER JOIN Departamento D ON F.idDepartamento=D.id
+WHERE P.Nombre LIKE ('%'+@Variable+'%') OR P.Apellido1 LIKE ('%'+@Variable+'%')  OR P.Apellido2 LIKE  ('%'+@Variable+'%')  OR D.Nombre LIKE ('%'+@Variable+'%') 
+
+--exec sp_BuscarEmpleado'Desarro'
+
+
+--Se piensa para cargar el dropdown
+go
+CREATE PROCEDURE sp_CargarDepartamento
+AS
+SELECT *  FROM Departamento
+
+--Se carga los funcionarios por despartameno
+go
+CREATE PROCEDURE sp_CargarEmpleadosPorDepartamento
+@IdDepartamento int
+as
+select F.id AS IdFunconario, P.Nombre,P.Apellido1,P.Apellido2,F.idDepartamento,D.Nombre AS Departamento FROM Funcionario F
+INNER JOIN Persona P ON F.idCedula=P.id
+INNER JOIN Departamento D ON F.idDepartamento=D.id
+WHERE f.idDepartamento=@IdDepartamento
