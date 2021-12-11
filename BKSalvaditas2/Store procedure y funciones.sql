@@ -116,6 +116,7 @@ begin
 	Return
 end;
 
+GO
 CREATE PROCEDURE sp_IngresoVisita
 @Cedula varchar(50),
 @IdEmpleado int,
@@ -142,3 +143,13 @@ Select * from fs_ConsultarCedula('115670466')
 --Select * from [dbo].[fs_ConsultarFuncionario]('Desarrollo')
 --SELECT idDepartamento FROM fs_ConsultarFuncionarioID(5)
 
+GO
+CREATE PROCEDURE sp_BuscarEmpleado
+@Variable varchar(50)
+AS
+SELECT F.id,F.idDepartamento,P.Nombre,P.Apellido1,P.Apellido2 FROM Funcionario F
+INNER JOIN Persona P ON F.idCedula=P.id
+INNER JOIN Departamento D ON F.idDepartamento=D.id
+WHERE P.Nombre LIKE ('%'+@Variable+'%') OR P.Apellido1 LIKE ('%'+@Variable+'%')  OR P.Apellido2 LIKE  ('%'+@Variable+'%')  OR D.Nombre LIKE ('%'+@Variable+'%') 
+
+exec sp_BuscarEmpleado'Desarro'
