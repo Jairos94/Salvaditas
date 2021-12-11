@@ -1,0 +1,50 @@
+<body class="m-o vh-100 row justify-content-center align-items-center">
+    <div class="col-auto ">
+        <form>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Cedula</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">Ingrese el número de cédula sin espacios ni guiones</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Tipo de cédula</label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected disabled>Seleccione un tipo cédula</option>
+                    <option value="1">Nacional</option>
+                    <option value="2">Extranjera</option>
+                </select>
+            </div>
+
+            <hr>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Seleccione departamento</label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected disabled>Departamento</option>
+                    <option value="1">RRHH</option>
+                    <option value="2">Proveduria</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Buscar Colaborador</label>
+                <nav class="navbar navbar-light bg-light">
+                    <form class="container-fluid">
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Nombre o apellidos" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                    </form>
+                  </nav>
+            </div>
+
+
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-primary">Realizar visita</button>
+                <button type="button" class="btn btn-outline-danger" routerLink="/" routerLinkActive="active">Regresar</button>
+              </div>
+            
+        </form>
+    </div>
+</body>
