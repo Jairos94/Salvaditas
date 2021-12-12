@@ -1,7 +1,9 @@
+using BKSalvaditas2.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +17,9 @@ using System.Threading.Tasks;
 namespace BKSalvaditas2
 {
     public class Startup
+
     {
+        private cn Cadena = new cn();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,17 +30,30 @@ namespace BKSalvaditas2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
 
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BKSalvaditas2", Version = "v1" });
             });
+            
+            services.AddDbContext<AplicationDbContex>(options =>
+                                    options.UseSqlServer(Configuration.GetConnectionString(Cadena.conexcion())));
+            services.AddCors(options => options.AddPolicy("AllowWebApp",
+                                        builder => builder.AllowAnyOrigin()
+                                                        .AllowAnyHeader()
+                                                        .AllowAnyMethod()
+                                                        ));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+          
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

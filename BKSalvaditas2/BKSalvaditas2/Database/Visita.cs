@@ -20,7 +20,7 @@ namespace BKSalvaditas2.Database
         #region Ingreso de visitas
         public void IngresarVisita(visitaModel x)
         {
-            cadena.conexcion(CadenaString);
+            CadenaString=cadena.conexcion();
             SqlConnection Con = new SqlConnection(CadenaString);
             
             try
