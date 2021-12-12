@@ -24,7 +24,7 @@ namespace BKSalvaditas2.Controllers
 
 
 
-        // GET: api/<Visitas>
+        //GET: api/<Visitas>
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -45,7 +45,7 @@ namespace BKSalvaditas2.Controllers
 
         // POST api/<Visitas>
         [HttpPost]
-        public IActionResult Post([FromBody] visitaModel x)
+        public IActionResult spIngresarVisita([FromBody] visitaModel x)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace BKSalvaditas2.Controllers
         }
 
         // DELETE api/<Visitas>/5
-        [HttpDelete("{id}")] 
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }
