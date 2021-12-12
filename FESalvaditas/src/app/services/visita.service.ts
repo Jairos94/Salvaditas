@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class VisitaService {
   /* Se debe colocar el impor */
   private myUrl='https://localhost:44391/'
-/*   private miApi='api/Visitas' */
+  private miApi='api/Visitas'
   constructor(http:HttpClient) { }
 
 
